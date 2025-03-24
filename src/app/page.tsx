@@ -1,5 +1,4 @@
 import { getList } from "@/libs/microcms";
-import parse from "html-react-parser";
 
 export default async function Home() {
   const { contents } = await getList();
@@ -15,7 +14,6 @@ export default async function Home() {
           <div>日程: {post.live.date}</div>
           <div>会場名: {post.location.name}</div>
           <div>座席: {post.seat}</div>
-          {/* <div>感想: {parse(post.content)}</div> */}
         </li>
         );
       })}
