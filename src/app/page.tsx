@@ -9,9 +9,9 @@ export default async function Home() {
       <ul className="flex gap-2 m-10">
       {contents.map((post) => {
         return (
-        <li key={post.id} className="border-b-2 border-gray border-soild">
+        <li key={post.id} className="border-1 border-gray border-soild">
           <div>ライブ名: {post.live.name}</div>
-          <div>日程: {post.live.date}</div>
+          <div>日程: {post.date}</div>
           <div>会場名: {post.location.name}</div>
           <div>座席: {post.seat}</div>
         </li>
