@@ -14,9 +14,9 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">オタ活めも</h1>
         <div className="relative w-full sm:w-auto flex-grow sm:flex-grow-0">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input type="search" placeholder="メモを検索..." className="pl-9 w-full sm:w-[200px] lg:w-[300px] bg-white" />
+          <Input type="search" placeholder="メモを検索..." className="pl-9 w-full sm:w-[200px] lg:w-[300px] bg-white" disabled />
         </div>
-        <Button className="w-full sm:w-auto">
+        <Button className="w-full sm:w-auto" disabled>
           <Plus className="mr-2 h-4 w-4" />
           新規作成
         </Button>
