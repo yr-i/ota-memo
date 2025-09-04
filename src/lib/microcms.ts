@@ -10,9 +10,23 @@ import type {
 //ブログの型定義
 export type Blog = {
   id: string;
-  title: string;
+  date: string;
   content: string;
-  eyecatch?: MicroCMSImage;
+  seat?: string;
+  view?: string;
+  hotel?: string;
+  live: {
+    id: string;
+    name: string;
+    setList: string;
+  } & MicroCMSDate;
+  location: {
+    id: string;
+    name: string;
+    capacity: number;
+    access: string;
+    memo: string;
+  } & MicroCMSDate;
 } & MicroCMSDate;
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -31,7 +45,6 @@ export const client = createClient({
 
 // ブログ一覧を取得
 export const getList = async (queries?: MicroCMSQueries) => {
-  // const listData = await client.getList<Blog>({
     const listData = await client.getList({
     endpoint: "memo",
     queries,
@@ -49,7 +62,7 @@ export const getDetail = async (
   queries?: MicroCMSQueries
   ) => {
     const detailData = await client.getListDetail<Blog>({
-      endpoint: "blogs",
+      endpoint: "memo",
       contentId,
       queries,
   });
