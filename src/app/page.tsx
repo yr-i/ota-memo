@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Plus } from "lucide-react";
 import { formatDate } from "@/lib/format-date";
+import Link from "next/link"
 
 export default async function Home() {
   const { contents } = await getList();
@@ -24,16 +25,18 @@ export default async function Home() {
 
       <main className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
         {contents.map((content) => (
-          <Card key={content.id} className="hover:shadow-md transition-shadow cursor-pointer">
-            <CardHeader>
-              <CardTitle>{content.live.name}</CardTitle>
-              <CardDescription className="text-sm text-muted-foreground">{formatDate(content.date)}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">{content.location.name}</p>
-              <p className="text-sm text-muted-foreground">{content.seat}</p>
-            </CardContent>
-          </Card>
+          <Link key={content.id} href={`/memos/${content.id}`} passHref>
+            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+              <CardHeader>
+                <CardTitle>{content.live.name}</CardTitle>
+                <CardDescription className="text-sm text-muted-foreground">{formatDate(content.date)}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">{content.location.name}</p>
+                <p className="text-sm text-muted-foreground">{content.seat}</p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </main>
 
