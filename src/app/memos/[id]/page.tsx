@@ -9,14 +9,14 @@ import { formatDate } from "@/lib/format-date"
 import DOMPurify from "isomorphic-dompurify"
 
 interface MemoDetailPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default async function MemoDetailPage({ params }: MemoDetailPageProps) {
-  const { id } = await params;
-  const content = await getDetail(id);
+  const { id } = await params
+  const content = await getDetail(id)
 
   if (!content) {
     // メモが見つからない場合は404ページを表示
